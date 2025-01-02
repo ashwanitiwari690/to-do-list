@@ -1,0 +1,47 @@
+
+    <div class="row mt-3 mx-5">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="mb-1">Title</label>
+            <input type="text" [(ngModel)]="title" class="form-control" placeholder="Enter Title">
+            <br>
+            <ng-container *ngIf="titleerror">This field is Required</ng-container>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="mb-1">Description</label>
+            <input class="form-control" [(ngModel)]="description" placeholder="Enter Description">
+            <br>
+            <ng-container *ngIf="descriptionerror">This field is Required</ng-container>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <button type="submit" (click)="onsubmit()" class="btn btn-primary mt-3">{{btnname}} TO-DO</button>
+        </div>
+    </div>
+
+
+
+
+<table class="table" style="margin: 100px 0px; text-align: center;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of todolist;let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{item.title}}</td>
+      <td>{{item.description}}</td>
+      <td>
+        <button class="btn btn-primary" style="margin: 2px; padding: 3px;" (click)="edittodo(i)">Edit</button>
+        <button class="btn btn-danger" style="margin: 2px;padding: 3px;" (click)="deletetodo(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
